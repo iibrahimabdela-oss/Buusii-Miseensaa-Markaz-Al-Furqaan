@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Circular Text Paths -->
+    <!-- Top arc: center (250,250), radius 215, swept over top -->
+    <path id="topTextArc" d="M 65,250 A 185,185 0 0,1 435,250" fill="none" />
+    <!-- Bottom arc: swept over bottom from left to right -->
+    <path id="bottomTextArc" d="M 55,250 A 195,195 0 0,0 445,250" fill="none" />
+
+    <!-- Gradients -->
+    <radialGradient id="mintCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9fe0c5" />
+      <stop offset="70%" stop-color="#76c5a5" />
+      <stop offset="100%" stop-color="#5eb895" />
+    </radialGradient>
+
+    <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4af37" />
+      <stop offset="50%" stop-color="#f3e5ab" />
+      <stop offset="100%" stop-color="#aa820a" />
+    </linearGradient>
+
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="60%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fef08a" />
+    </linearGradient>
+
+    <linearGradient id="woodStand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d2314" />
+      <stop offset="50%" stop-color="#5c3822" />
+      <stop offset="100%" stop-color="#2a160b" />
+    </linearGradient>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Outer Double Dark & Gold Rings -->
+  <circle cx="250" cy="250" r="246" fill="#f4efe6" stroke="#1f1b18" stroke-width="6" />
+  <circle cx="250" cy="250" r="236" fill="none" stroke="url(#goldRing)" stroke-width="4" />
+  <circle cx="250" cy="250" r="162" fill="none" stroke="#1f1b18" stroke-width="4" />
+
+  <!-- Inner Mint Green Background Circle -->
+  <circle cx="250" cy="250" r="158" fill="url(#mintCenter)" />
+
+  <!-- Top Curved Arabic Text: مركز الفرقان لتحفيظ القرآن الكريم – جرو – إثيوبيا -->
+  <text font-family="'Scheherazade New', 'Amiri', 'Traditional Arabic', serif" font-weight="bold" font-size="21" fill="#181512" letter-spacing="1">
+    <textPath href="#topTextArc" startOffset="50%" text-anchor="middle">
+      مركز الفرقان لتحفيظ القرآن الكريم – جرو – إثيوبيا
+    </textPath>
+  </text>
+
+  <!-- Bottom Curved English Text: AL-FURQAN QURAN MEMORIZATION CENTER - CHIRO - ETHIOPIA -->
+  <text font-family="'Cinzel', 'Trajan Pro', 'Arial Black', sans-serif" font-weight="900" font-size="14.5" fill="#181512" letter-spacing="1.2">
+    <textPath href="#bottomTextArc" startOffset="50%" text-anchor="middle">
+      AL-FURQAN QURAN MEMORIZATION CENTER-CHIRO-ETHIOPIA
+    </textPath>
+  </text>
+
+  <!-- Left & Right "Allah" Medallions in Border -->
+  <!-- Left Medallion -->
+  <g transform="translate(48, 250)">
+    <circle cx="0" cy="0" r="15" fill="#ffffff" stroke="#1f1b18" stroke-width="2" />
+    <circle cx="0" cy="0" r="13" fill="none" stroke="url(#goldRing)" stroke-width="1.5" />
+    <text x="0" y="5" font-family="'Amiri', 'Traditional Arabic', serif" font-size="12" font-weight="bold" fill="#1f1b18" text-anchor="middle">الله</text>
+  </g>
+
+  <!-- Right Medallion -->
+  <g transform="translate(452, 250)">
+    <circle cx="0" cy="0" r="15" fill="#ffffff" stroke="#1f1b18" stroke-width="2" />
+    <circle cx="0" cy="0" r="13" fill="none" stroke="url(#goldRing)" stroke-width="1.5" />
+    <text x="0" y="5" font-family="'Amiri', 'Traditional Arabic', serif" font-size="12" font-weight="bold" fill="#1f1b18" text-anchor="middle">الله</text>
+  </g>
+
+  <!-- Left Torch -->
+  <g transform="translate(118, 260) scale(0.65)" filter="url(#shadow)">
+    <!-- Flame -->
+    <path d="M 0,-40 C -15,-20 -20,5 0,25 C 20,5 15,-20 0,-40 Z" fill="url(#flameGrad)" />
+    <path d="M 0,-25 C -8,-10 -10,5 0,18 C 10,5 8,-10 0,-25 Z" fill="#fef08a" />
+    <!-- Torch Bowl -->
+    <path d="M -22,20 L 22,20 L 14,48 L -14,48 Z" fill="#d97706" stroke="#1f1b18" stroke-width="3" />
+    <line x1="-18" y1="28" x2="18" y2="28" stroke="#fef08a" stroke-width="2" />
+    <line x1="-14" y1="38" x2="14" y2="38" stroke="#92400e" stroke-width="2" />
+    <!-- Torch Handle -->
+    <path d="M -6,48 L 6,48 L 10,95 L -10,95 Z" fill="#78716c" stroke="#1f1b18" stroke-width="3" />
+  </g>
+
+  <!-- Right Torch -->
+  <g transform="translate(382, 260) scale(0.65)" filter="url(#shadow)">
+    <!-- Flame -->
+    <path d="M 0,-40 C -15,-20 -20,5 0,25 C 20,5 15,-20 0,-40 Z" fill="url(#flameGrad)" />
+    <path d="M 0,-25 C -8,-10 -10,5 0,18 C 10,5 8,-10 0,-25 Z" fill="#fef08a" />
+    <!-- Torch Bowl -->
+    <path d="M -22,20 L 22,20 L 14,48 L -14,48 Z" fill="#d97706" stroke="#1f1b18" stroke-width="3" />
+    <line x1="-18" y1="28" x2="18" y2="28" stroke="#fef08a" stroke-width="2" />
+    <line x1="-14" y1="38" x2="14" y2="38" stroke="#92400e" stroke-width="2" />
+    <!-- Torch Handle -->
+    <path d="M -6,48 L 6,48 L 10,95 L -10,95 Z" fill="#78716c" stroke="#1f1b18" stroke-width="3" />
+  </g>
+
+  <!-- Calligraphy: القرآن (Al-Quran) with 3D outline -->
+  <g transform="translate(250, 195)" filter="url(#shadow)">
+    <!-- Drop Shadow / 3D Extrusion -->
+    <text x="4" y="6" font-family="'Amiri', 'Scheherazade New', 'Traditional Arabic', serif" font-size="94" font-weight="900" fill="#000000" text-anchor="middle">القرآن</text>
+    <!-- White Outline -->
+    <text x="0" y="0" font-family="'Amiri', 'Scheherazade New', 'Traditional Arabic', serif" font-size="94" font-weight="900" fill="#000000" stroke="#ffffff" stroke-width="8" stroke-linejoin="round" text-anchor="middle">القرآن</text>
+    <!-- Foreground Text -->
+    <text x="0" y="0" font-family="'Amiri', 'Scheherazade New', 'Traditional Arabic', serif" font-size="94" font-weight="900" fill="#181512" text-anchor="middle">القرآن</text>
+  </g>
+
+  <!-- Carved Wooden Rehal (Stand) -->
+  <g transform="translate(250, 360)" filter="url(#shadow)">
+    <!-- Base Lower Legs -->
+    <path d="M -115,25 L -5,25 L -35,50 L -130,50 Z" fill="#2a160b" stroke="#1a0c05" stroke-width="3" />
+    <path d="M 115,25 L 5,25 L 35,50 L 130,50 Z" fill="#2a160b" stroke="#1a0c05" stroke-width="3" />
+    
+    <!-- Crossed Stand Slats -->
+    <path d="M -130,0 L -5,-35 L 5,-35 L -100,25 Z" fill="url(#woodStand)" stroke="#1a0c05" stroke-width="3" />
+    <path d="M 130,0 L 5,-35 L -5,-35 L 100,25 Z" fill="url(#woodStand)" stroke="#1a0c05" stroke-width="3" />
+    
+    <!-- Center Brass Stud / Knob -->
+    <circle cx="0" cy="-5" r="5" fill="#fcd34d" stroke="#78350f" stroke-width="2" />
+  </g>
+
+  <!-- Open Holy Quran (Book) -->
+  <g transform="translate(250, 305)" filter="url(#shadow)">
+    <!-- Thick Book Pages & Cover Trim -->
+    <path d="M -102,18 C -55,30 -15,10 0,8 C 15,10 55,30 102,18 L 104,26 C 55,38 15,18 0,16 C -15,18 -55,38 -104,26 Z" fill="#2a160b" />
+    
+    <!-- Left Page -->
+    <path d="M 0,0 C -25,2 -65,-8 -100,-2 L -100,-88 C -65,-94 -25,-84 0,-82 Z" fill="#fdfbf7" stroke="#1a0c05" stroke-width="2" />
+    <!-- Left Page Gold Illumination Border -->
+    <path d="M -8,-6 C -25,-4 -60,-12 -92,-8 L -92,-82 C -60,-86 -25,-78 -8,-76 Z" fill="none" stroke="#d4af37" stroke-width="2.5" />
+    <!-- Left Page Inner Green Decorative Bar -->
+    <rect x="-82" y="-76" width="66" height="8" fill="#047857" rx="2" />
+    <!-- Left Page Calligraphy Simulation Lines -->
+    <line x1="-86" y1="-58" x2="-14" y2="-58" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="8 3 14 3" />
+    <line x1="-86" y1="-48" x2="-14" y2="-48" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="12 3 9 3" />
+    <line x1="-86" y1="-38" x2="-14" y2="-38" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="6 3 16 3" />
+    <line x1="-86" y1="-28" x2="-14" y2="-28" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="14 3 8 3" />
+    <line x1="-86" y1="-18" x2="-24" y2="-18" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="10 3 6 3" />
+
+    <!-- Right Page -->
+    <path d="M 0,0 C 25,2 65,-8 100,-2 L 100,-88 C 65,-94 25,-84 0,-82 Z" fill="#fdfbf7" stroke="#1a0c05" stroke-width="2" />
+    <!-- Right Page Gold Illumination Border -->
+    <path d="M 8,-6 C 25,-4 60,-12 92,-8 L 92,-82 C 60,-86 25,-78 8,-76 Z" fill="none" stroke="#d4af37" stroke-width="2.5" />
+    <!-- Right Page Inner Green Decorative Bar -->
+    <rect x="16" y="-76" width="66" height="8" fill="#047857" rx="2" />
+    <!-- Right Page Calligraphy Simulation Lines -->
+    <line x1="14" y1="-58" x2="86" y2="-58" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="10 3 12 3" />
+    <line x1="14" y1="-48" x2="86" y2="-48" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="15 3 7 3" />
+    <line x1="14" y1="-38" x2="86" y2="-38" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="8 3 14 3" />
+    <line x1="14" y1="-28" x2="86" y2="-28" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="12 3 10 3" />
+    <line x1="24" y1="-18" x2="86" y2="-18" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="6 3 14 3" />
+
+    <!-- Book Spine Crease -->
+    <line x1="0" y1="-82" x2="0" y2="4" stroke="#92400e" stroke-width="2.5" />
+  </g>
+</svg>

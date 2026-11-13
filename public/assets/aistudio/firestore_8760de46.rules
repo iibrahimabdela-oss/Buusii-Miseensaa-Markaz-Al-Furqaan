@@ -1,0 +1,108 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Admin authorization: bootstrap user from runtime or admins doc
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'shaxaa72@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // Connection test document
+    match /test/{docId} {
+      allow read: if isValidId(docId);
+    }
+
+    // Admin role mapping doc
+    match /admins/{userId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // Members Collection
+    function isValidMember(data) {
+      return data.fullName is string && data.fullName.size() > 0 && data.fullName.size() <= 120 &&
+             data.phoneNumber is string && data.phoneNumber.size() > 0 && data.phoneNumber.size() <= 30 &&
+             data.memberId is string && data.memberId.size() > 0 && data.memberId.size() <= 30 &&
+             data.monthlyPledgeETB is number && data.monthlyPledgeETB >= 0 &&
+             data.status in ['active', 'inactive', 'suspended'] &&
+             data.createdBy is string && data.createdBy.size() <= 128;
+    }
+
+    match /members/{memberId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(memberId) && isValidMember(incoming());
+      allow update: if isSignedIn() && isValidId(memberId) && isValidMember(incoming());
+      allow delete: if isAdmin() && isValidId(memberId);
+    }
+
+    // Contributions Collection
+    function isValidContribution(data) {
+      return data.memberId is string && data.memberId.size() > 0 && data.memberId.size() <= 64 &&
+             data.memberName is string && data.memberName.size() > 0 && data.memberName.size() <= 120 &&
+             data.receiptNumber is string && data.receiptNumber.size() > 0 && data.receiptNumber.size() <= 40 &&
+             data.amountETB is number && data.amountETB > 0 &&
+             data.ethiopianMonth is string && data.ethiopianMonth.size() <= 30 &&
+             data.ethiopianYear is number &&
+             data.paymentMethod in ['cbe', 'telebirr', 'awash', 'cbe_birr', 'cash', 'bank_transfer', 'other'] &&
+             data.recordedBy is string && data.recordedBy.size() <= 128 &&
+             data.status in ['completed', 'verified', 'pending', 'voided'];
+    }
+
+    match /contributions/{contributionId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(contributionId) && isValidContribution(incoming());
+      allow update: if isSignedIn() && isValidId(contributionId) && isValidContribution(incoming());
+      allow delete: if isAdmin() && isValidId(contributionId);
+    }
+
+    // Expenses Collection
+    function isValidExpense(data) {
+      return data.title is string && data.title.size() > 0 && data.title.size() <= 150 &&
+             data.category in ['ustaz_allowance', 'quran_books', 'utilities', 'maintenance', 'charity_iftaar', 'administrative', 'other'] &&
+             data.amountETB is number && data.amountETB > 0 &&
+             data.recordedBy is string && data.recordedBy.size() <= 128;
+    }
+
+    match /expenses/{expenseId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(expenseId) && isValidExpense(incoming());
+      allow update: if isSignedIn() && isValidId(expenseId) && isValidExpense(incoming());
+      allow delete: if isAdmin() && isValidId(expenseId);
+    }
+
+    // Center Settings Collection
+    function isValidSetting(data) {
+      return data.centerName is string && data.centerName.size() > 0 && data.centerName.size() <= 150;
+    }
+
+    match /settings/{settingId} {
+      allow read: if true; // Public center info and bank accounts for donors
+      allow write: if isAdmin() && isValidId(settingId) && isValidSetting(incoming());
+    }
+  }
+}

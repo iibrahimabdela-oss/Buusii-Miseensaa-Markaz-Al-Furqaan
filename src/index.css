@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html,
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #0b1f3a;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Minimalist Theme Tokens */
+.theme-light {
+  background-color: #f8fafc;
+  color: #0b1f3a;
+}
+
+.theme-ivory {
+  background-color: #fbfaf6;
+  color: #1e293b;
+}
+
+.theme-dark {
+  background-color: #060d18;
+  color: #f1f5f9;
+}
+
+/* Scrollbar refinement */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Print-friendly styles for Receipt printing */
+@media print {
+  header,
+  nav,
+  footer,
+  aside,
+  .print\:hidden,
+  button,
+  .fixed.inset-0.bg-black\/60 {
+    display: none !important;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #root {
+    display: block !important;
+  }
+
+  .receipt-modal-backdrop {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    inset: auto !important;
+  }
+
+  .receipt-card {
+    border: 2px solid #0b1f3a !important;
+    box-shadow: none !important;
+    border-radius: 12px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    page-break-inside: avoid !important;
+  }
+
+  #receipt-printable {
+    padding: 24px !important;
+    color: #000000 !important;
+  }
+
+  #receipt-printable * {
+    visibility: visible !important;
+  }
+}
